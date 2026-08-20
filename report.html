@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report a Problem - CivicOS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div>
+            <h1>CivicOS</h1>
+            <p>Smart Civic Problem Management</p>
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="report.html">
+                Report
+            </a>
+
+            <a href="track.html">
+                Track
+            </a>
+
+            <a href="officer.html">
+                Officer
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+
+    <main>
+
+        <section class="report-page">
+
+            <h2>
+                Report a Civic Problem
+            </h2>
+
+            <p>
+                Upload a photo of the problem and provide
+                its location.
+            </p>
+
+
+            <!-- =========================
+                 Photo Upload
+                 ========================= -->
+
+            <section class="form-section">
+
+                <h3>
+                    1. Upload Problem Photo
+                </h3>
+
+                <input
+                    type="file"
+                    id="problemImage"
+                    accept="image/*"
+                >
+
+                <p id="imageStatus"></p>
+
+
+                <img
+                    id="imagePreview"
+                    src=""
+                    alt="Selected problem image"
+                    style="
+                        display: none;
+                        max-width: 400px;
+                        width: 100%;
+                        margin-top: 15px;
+                        border-radius: 12px;
+                    "
+                >
+
+            </section>
+
+
+            <!-- =========================
+                 AI Detection
+                 ========================= -->
+
+            <section class="form-section ai-section">
+
+                <h3>
+                    2. AI Problem Detection
+                </h3>
+
+                <p>
+                    CivicOS will analyze the uploaded photo
+                    and identify the civic problem.
+                </p>
+
+                <div
+                    id="aiStatus"
+                    class="ai-status"
+                >
+                    ⏳ AI Detection Pending
+                </div>
+
+
+                <div
+                    id="aiResult"
+                    class="ai-result"
+                    style="display: none;"
+                >
+
+                    <h4>
+                        Detection Result
+                    </h4>
+
+                    <p>
+                        <strong>
+                            Problem Type:
+                        </strong>
+
+                        <span id="aiProblemType">
+                            —
+                        </span>
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Confidence:
+                        </strong>
+
+                        <span id="aiConfidence">
+                            —
+                        </span>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 Location
+                 ========================= -->
+
+            <section class="form-section">
+
+                <h3>
+                    3. Problem Location
+                </h3>
+
+                <button
+                    type="button"
+                    onclick="getLocation()"
+                >
+                    📍 Use My Location
+                </button>
+
+                <p id="locationStatus">
+                    Location not selected
+                </p>
+
+            </section>
+
+
+            <!-- =========================
+                 Description
+                 ========================= -->
+
+            <section class="form-section">
+
+                <h3>
+                    4. Description
+                </h3>
+
+                <textarea
+                    id="description"
+                    rows="5"
+                    placeholder="Describe the problem..."
+                ></textarea>
+
+            </section>
+
+
+            <!-- =========================
+                 Submit
+                 ========================= -->
+
+            <section class="form-section">
+
+                <button
+                    type="button"
+                    onclick="submitReport()"
+                >
+                    Submit Report
+                </button>
+
+            </section>
+
+
+            <!-- =========================
+                 Result
+                 ========================= -->
+
+            <section
+                id="result"
+                class="success-box"
+                style="display: none;"
+            >
+
+                <h2>
+                    ✓ Report Submitted
+                </h2>
+
+                <p>
+                    Your civic problem has been successfully
+                    reported.
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Issue ID:
+                    </strong>
+
+                    <span id="issueId"></span>
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Status:
+                    </strong>
+
+                    Reported
+
+                </p>
+
+
+                <!-- AI Result in Final Report -->
+
+                <p>
+
+                    <strong>
+                        AI Detection:
+                    </strong>
+
+                    <span id="finalAIResult">
+                        Pending
+                    </span>
+
+                </p>
+
+
+                <!-- Go to Track -->
+
+                <a
+                    href="track.html"
+                    class="button"
+                >
+                    Track My Report
+                </a>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 CivicOS
+        </p>
+
+        <p>
+            AI-powered civic problem management
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

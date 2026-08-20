@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Track Report - CivicOS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div>
+            <h1>CivicOS</h1>
+            <p>Smart Civic Problem Management</p>
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="report.html">
+                Report
+            </a>
+
+            <a href="track.html">
+                Track
+            </a>
+
+            <a href="officer.html">
+                Officer
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Main -->
+
+    <main>
+
+        <section class="track-page">
+
+            <h2>
+                Track Your Report
+            </h2>
+
+            <p>
+                Enter your CivicOS Issue ID to check
+                the current status of your report.
+            </p>
+
+
+            <!-- Issue ID Input -->
+
+            <section class="form-section">
+
+                <h3>
+                    Enter Issue ID
+                </h3>
+
+                <input
+                    type="text"
+                    id="searchIssueId"
+                    placeholder="Example: CIV-176"
+                >
+
+                <br><br>
+
+                <button
+                    type="button"
+                    onclick="trackReport()"
+                >
+                    Track Report
+                </button>
+
+            </section>
+
+
+            <!-- Report Result -->
+
+            <section
+                id="trackResult"
+                class="success-box"
+                style="display: none;"
+            >
+
+                <h2>
+                    Report Found
+                </h2>
+
+                <p>
+
+                    <strong>
+                        Issue ID:
+                    </strong>
+
+                    <span id="trackId"></span>
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Problem:
+                    </strong>
+
+                    <span id="trackType"></span>
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Description:
+                    </strong>
+
+                    <span id="trackDescription"></span>
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Location:
+                    </strong>
+
+                    <span id="trackLocation"></span>
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Status:
+                    </strong>
+
+                    <span id="trackStatus"></span>
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Assigned Worker:
+                    </strong>
+
+                    <span id="trackWorker"></span>
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Reported:
+                    </strong>
+
+                    <span id="trackDate"></span>
+
+                </p>
+
+            </section>
+
+
+            <!-- Not Found -->
+
+            <section
+                id="notFound"
+                style="display: none;"
+            >
+
+                <h3>
+                    ❌ Report Not Found
+                </h3>
+
+                <p>
+                    Please check your Issue ID and try again.
+                </p>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 CivicOS
+        </p>
+
+        <p>
+            AI-powered civic problem management
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

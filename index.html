@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CivicOS - Smart City</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         Header
+         ========================= -->
+
+    <header>
+
+        <div class="brand">
+
+            <h1>CivicOS</h1>
+
+            <p>
+                Smart Civic Problem Management
+            </p>
+
+        </div>
+
+
+        <!-- Mobile Menu Button -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+
+        <!-- Navigation -->
+
+        <nav id="mainNav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="report.html">
+                Report
+            </a>
+
+            <a href="track.html">
+                Track
+            </a>
+
+            <a href="officer.html">
+                Officer
+            </a>
+
+            <a href="worker.html">
+                Worker
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         Hero Section
+         ========================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <h2>
+                Make Your City Better
+            </h2>
+
+            <p>
+                Report civic problems and track them
+                from report to resolution.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="report.html"
+                    class="button"
+                >
+                    Report a Problem
+                </a>
+
+
+                <a
+                    href="track.html"
+                    class="button secondary-button"
+                >
+                    Track My Report
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Problem Categories
+             ========================= -->
+
+        <section class="problems">
+
+            <h2>
+                Report Problems
+            </h2>
+
+
+            <div class="problem-container">
+
+
+                <!-- Pothole -->
+
+                <div class="problem-card">
+
+                    <div class="problem-icon">
+                        🕳️
+                    </div>
+
+                    <h3>
+                        Pothole
+                    </h3>
+
+                    <p>
+                        Report road damage or potholes
+                        in your area.
+                    </p>
+
+                </div>
+
+
+                <!-- Garbage -->
+
+                <div class="problem-card">
+
+                    <div class="problem-icon">
+                        🗑️
+                    </div>
+
+                    <h3>
+                        Garbage
+                    </h3>
+
+                    <p>
+                        Report garbage dumping or
+                        accumulation.
+                    </p>
+
+                </div>
+
+
+                <!-- Waterlogging -->
+
+                <div class="problem-card">
+
+                    <div class="problem-icon">
+                        💧
+                    </div>
+
+                    <h3>
+                        Waterlogging
+                    </h3>
+
+                    <p>
+                        Report flooded or waterlogged
+                        roads.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             How CivicOS Works
+             ========================= -->
+
+        <section class="how-it-works">
+
+            <h2>
+                How CivicOS Works
+            </h2>
+
+
+            <div class="workflow">
+
+                <div>
+
+                    <strong>
+                        1
+                    </strong>
+
+                    <p>
+                        Report
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        2
+                    </strong>
+
+                    <p>
+                        Identify
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        3
+                    </strong>
+
+                    <p>
+                        Assign
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        4
+                    </strong>
+
+                    <p>
+                        Resolve
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+         ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 CivicOS
+        </p>
+
+        <p>
+            AI-powered civic problem management
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         Mobile Menu JavaScript
+         ========================= -->
+
+    <script>
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const mainNav =
+            document.getElementById("mainNav");
+
+
+        menuToggle.addEventListener(
+            "click",
+            function () {
+
+                mainNav.classList.toggle("mobile-open");
+
+
+                const isOpen =
+                    mainNav.classList.contains(
+                        "mobile-open"
+                    );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+
+                menuToggle.textContent =
+                    isOpen ? "✕" : "☰";
+
+            }
+        );
+
+
+        // Close menu after clicking a link
+
+        const navLinks =
+            mainNav.querySelectorAll("a");
+
+
+        navLinks.forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    mainNav.classList.remove(
+                        "mobile-open"
+                    );
+
+                    menuToggle.textContent =
+                        "☰";
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+            );
+
+        });
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

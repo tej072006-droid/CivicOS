@@ -1,0 +1,826 @@
+/* =====================================================
+   CivicOS - Modern Smart City UI
+   ===================================================== */
+
+
+/* =====================================================
+   1. GLOBAL RESET
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f8fc;
+    color: #172033;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   2. HEADER / NAVBAR
+   ===================================================== */
+
+header {
+    background: rgba(255, 255, 255, 0.96);
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    border-bottom: 1px solid #e5eaf0;
+    box-shadow: 0 4px 20px rgba(20, 40, 70, 0.06);
+}
+
+
+header h1 {
+    color: #0b63ce;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+
+header p {
+    color: #667085;
+    font-size: 13px;
+    margin-top: -3px;
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+nav a {
+    text-decoration: none;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+
+    padding: 9px 14px;
+    border-radius: 8px;
+
+    transition: 0.25s ease;
+}
+
+
+nav a:hover {
+    background: #eaf3ff;
+    color: #0b63ce;
+}
+
+
+/* =====================================================
+   3. MAIN CONTAINER
+   ===================================================== */
+
+main {
+    width: min(1120px, 90%);
+    margin: auto;
+}
+
+
+/* =====================================================
+   4. HERO SECTION
+   ===================================================== */
+
+.hero {
+    margin-top: 55px;
+    padding: 80px 60px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf4ff 0%,
+            #f7fbff 55%,
+            #e9f7f3 100%
+        );
+
+    border: 1px solid #dceafa;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+.hero::after {
+    content: "";
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    right: -80px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(11, 99, 206, 0.08);
+}
+
+
+.hero h2 {
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.08;
+
+    max-width: 700px;
+
+    color: #102a43;
+    letter-spacing: -2px;
+
+    margin-bottom: 20px;
+}
+
+
+.hero > p {
+    max-width: 650px;
+
+    color: #526173;
+    font-size: 18px;
+
+    margin-bottom: 32px;
+}
+
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+
+/* =====================================================
+   5. BUTTONS
+   ===================================================== */
+
+.button,
+button {
+    display: inline-block;
+
+    border: none;
+    text-decoration: none;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    background: #0b63ce;
+    color: white;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.button:hover,
+button:hover {
+    background: #084f9f;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(11, 99, 206, 0.22);
+}
+
+
+.secondary-button {
+    background: white;
+    color: #0b63ce;
+
+    border: 1px solid #c9ddf5;
+}
+
+
+.secondary-button:hover {
+    background: #f4f9ff;
+}
+
+
+/* =====================================================
+   6. SECTION HEADINGS
+   ===================================================== */
+
+.problems,
+.how-it-works {
+    padding: 70px 0 10px;
+}
+
+
+.problems > h2,
+.how-it-works > h2 {
+    font-size: 32px;
+    color: #102a43;
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   7. PROBLEM CARDS
+   ===================================================== */
+
+.problem-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+
+.problem-card {
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    border: 1px solid #e6ebf1;
+
+    box-shadow:
+        0 8px 25px rgba(30, 50, 80, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.problem-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #bcd7f5;
+
+    box-shadow:
+        0 15px 35px rgba(30, 60, 100, 0.11);
+}
+
+
+.problem-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+
+.problem-card h3 {
+    color: #183b56;
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+
+.problem-card p {
+    color: #667085;
+}
+
+
+/* =====================================================
+   8. HOW CIVICOS WORKS
+   ===================================================== */
+
+.workflow {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 60px;
+}
+
+
+.workflow > div {
+    background: white;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    border: 1px solid #e6ebf1;
+}
+
+
+.workflow strong {
+    display: inline-flex;
+
+    width: 44px;
+    height: 44px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eaf3ff;
+    color: #0b63ce;
+
+    margin-bottom: 10px;
+}
+
+
+.workflow p {
+    font-weight: 700;
+    color: #344054;
+}
+
+
+/* =====================================================
+   9. REPORT / TRACK PAGE
+   ===================================================== */
+
+.report-page,
+.track-page {
+    max-width: 800px;
+
+    margin: 55px auto 70px;
+
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 20px;
+
+    border: 1px solid #e5eaf0;
+
+    box-shadow:
+        0 10px 35px rgba(30, 50, 80, 0.07);
+}
+
+
+.report-page > h2,
+.track-page > h2 {
+    color: #102a43;
+    font-size: 34px;
+
+    margin-bottom: 8px;
+}
+
+
+.report-page > p,
+.track-page > p {
+    color: #667085;
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   10. FORM SECTIONS
+   ===================================================== */
+
+.form-section {
+    margin-top: 28px;
+    padding: 25px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e8edf3;
+
+    border-radius: 14px;
+}
+
+
+.form-section h3 {
+    color: #183b56;
+    margin-bottom: 15px;
+}
+
+
+input[type="file"] {
+    width: 100%;
+
+    padding: 12px;
+
+    background: white;
+
+    border: 1px solid #d0d5dd;
+
+    border-radius: 8px;
+}
+
+
+input[type="text"],
+textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    background: white;
+
+    border: 1px solid #d0d5dd;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+textarea {
+    resize: vertical;
+}
+
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #0b63ce;
+
+    box-shadow:
+        0 0 0 3px rgba(11, 99, 206, 0.10);
+}
+
+
+#imagePreview {
+    display: block;
+
+    max-width: 100%;
+
+    border-radius: 12px;
+
+    border: 1px solid #e0e6ed;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+#imageStatus,
+#locationStatus {
+    color: #667085;
+
+    font-size: 14px;
+
+    margin-top: 10px;
+}
+
+
+/* =====================================================
+   11. SUCCESS BOX
+   ===================================================== */
+
+.success-box {
+    margin-top: 30px;
+
+    padding: 28px;
+
+    border-radius: 15px;
+
+    background: #ecfdf3;
+
+    border: 1px solid #b7ebc9;
+}
+
+
+.success-box h2 {
+    color: #087443;
+
+    margin-bottom: 10px;
+}
+
+
+.success-box p {
+    color: #344054;
+
+    margin-bottom: 8px;
+}
+
+
+/* =====================================================
+   12. OFFICER DASHBOARD
+   ===================================================== */
+
+.dashboard-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin: 35px 0;
+}
+
+
+.stat-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    border: 1px solid #e5eaf0;
+
+    box-shadow:
+        0 7px 22px rgba(30, 50, 80, 0.06);
+}
+
+
+.stat-card h3 {
+    color: #667085;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+
+.stat-card strong {
+    font-size: 32px;
+
+    color: #0b63ce;
+}
+
+
+/* =====================================================
+   13. MAP
+   ===================================================== */
+
+.map-container {
+    width: 100%;
+
+    height: 350px;
+
+    margin-top: 20px;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid #dfe5ec;
+}
+
+
+/* =====================================================
+   14. FOOTER
+   ===================================================== */
+
+footer {
+    margin-top: 80px;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background: #102a43;
+
+    color: white;
+}
+
+
+footer p {
+    margin: 4px 0;
+
+    color: #c9d5e2;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   15. MOBILE RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 16px 5%;
+    }
+
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+
+    .problem-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .workflow {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .dashboard-stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    nav {
+        width: 100%;
+
+        justify-content: flex-start;
+    }
+
+
+    main {
+        width: 92%;
+    }
+
+
+    .hero {
+        padding: 50px 25px;
+
+        margin-top: 30px;
+
+        border-radius: 18px;
+    }
+
+
+    .hero h2 {
+        font-size: 40px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .hero > p {
+        font-size: 16px;
+    }
+
+
+    .workflow {
+        grid-template-columns: 1fr;
+    }
+
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+
+    .report-page,
+    .track-page {
+        padding: 25px;
+
+        margin-top: 30px;
+    }
+
+
+    .report-page > h2,
+    .track-page > h2 {
+        font-size: 28px;
+    }
+
+
+    nav a {
+        padding: 7px 10px;
+    }
+
+}
+/* =====================================================
+   MOBILE HAMBURGER MENU
+   ===================================================== */
+
+.menu-toggle {
+    display: none;
+
+    background: transparent;
+    color: #0b63ce;
+
+    border: none;
+
+    font-size: 28px;
+
+    padding: 5px;
+
+    box-shadow: none;
+}
+
+
+.menu-toggle:hover {
+    background: transparent;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+/* =====================================================
+   MOBILE NAVIGATION
+   ===================================================== */
+
+@media (max-width: 650px) {
+
+    header {
+        position: sticky;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        justify-content: space-between;
+    }
+
+
+    .brand {
+        flex: 1;
+    }
+
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+    nav {
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        padding: 12px 5%;
+
+        background: white;
+
+        border-top: 1px solid #e5eaf0;
+
+        box-shadow:
+            0 10px 25px rgba(20, 40, 70, 0.10);
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 4px;
+    }
+
+
+    nav.mobile-open {
+        display: flex;
+    }
+
+
+    nav a {
+        width: 100%;
+
+        padding: 13px 15px;
+
+        border-radius: 8px;
+
+        text-align: left;
+    }
+
+
+    nav a:hover {
+        background: #eaf3ff;
+    }
+
+}

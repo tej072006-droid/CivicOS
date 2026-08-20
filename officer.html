@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Officer Dashboard - CivicOS</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet Map -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div>
+            <h1>CivicOS</h1>
+            <p>Officer Dashboard</p>
+        </div>
+
+        <nav>
+
+            <a href="index.html">Home</a>
+
+            <a href="report.html">Report</a>
+
+            <a href="track.html">Track</a>
+
+            <a href="officer.html">Officer</a>
+
+            <a href="worker.html">Worker</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Main -->
+
+    <main>
+
+        <section>
+
+            <h2>Officer Dashboard</h2>
+
+            <p>
+                Review, assign and monitor reported civic problems.
+            </p>
+
+        </section>
+
+
+        <!-- Dashboard Statistics -->
+
+        <section class="dashboard-stats">
+
+            <div class="stat-card">
+
+                <h3>Total Reports</h3>
+
+                <strong id="totalReports">0</strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Reported</h3>
+
+                <strong id="reportedCount">0</strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Assigned</h3>
+
+                <strong id="assignedCount">0</strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Completed</h3>
+
+                <strong id="resolvedCount">0</strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- Reports -->
+
+        <section>
+
+            <h2>Reported Civic Problems</h2>
+
+            <div id="reportsContainer">
+
+                <p>
+                    Loading reports...
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 CivicOS
+        </p>
+
+        <p>
+            AI-powered civic problem management
+        </p>
+
+    </footer>
+
+
+    <!-- Leaflet JavaScript -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+
+    <!-- CivicOS JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
