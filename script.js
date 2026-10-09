@@ -105,11 +105,57 @@ function getLocation() {
 }
 
 
+
+// ==========================================
+// CivicOS GEMINI AI CONFIGURATION
+// ==========================================
+const CIVICOS_GEMINI_WORKER_URL = "https://civicos-gemini.tej072006.workers.dev";
+
+// Ask the Cloudflare Worker to classify the reported civic issue.
+// The API key stays on Cloudflare; it is never included in this file.
+async function detectCivicProblem(description) {
+    const prompt = [
+        "You are CivicOS, an assistant that classifies civic infrastructure problems.",
+        "Classify the citizen's reported issue into a short category such as Pothole/Road Damage, Garbage, Water Leakage, Drainage, Streetlight, Damaged Public Property, or Other.",
+        "Do not claim to have seen a photo. Use only the citizen's written description.",
+        "Return only the category name, no explanation.",
+        "Citizen description: " + (description.trim() || "No written description provided.")
+    ].join("\\n");
+
+    const response = await fetch(CIVICOS_GEMINI_WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+    });
+
+    if (!response.ok) {
+        throw new Error("AI service returned HTTP " + response.status);
+    }
+
+    const data = await response.json();
+
+    // Support common response formats from the Worker.
+    let answer = data.text || data.response || data.output || "";
+    if (!answer && data.candidates && data.candidates[0]) {
+        answer = (data.candidates[0].content?.parts || [])
+            .map(part => part.text || "")
+            .join(" ");
+    }
+    if (!answer && data.result) {
+        answer = typeof data.result === "string" ? data.result : JSON.stringify(data.result);
+    }
+
+    answer = String(answer).trim().replace(/^["'`]+|["'`]+$/g, "");
+    if (!answer) throw new Error("AI returned an empty response");
+    return answer.slice(0, 100);
+}
+
+
 // ==========================================
 // 3. SUBMIT REPORT
 // ==========================================
 
-function submitReport() {
+async function submitReport() {
 
     const imageElement =
         document.getElementById("problemImage");
@@ -140,6 +186,22 @@ function submitReport() {
     }
 
 
+    // Try AI classification through the secure Cloudflare Worker.
+    // If AI is unavailable, the report still saves normally.
+    let detectedType = "Pending AI Detection";
+    const resultElement = document.getElementById("result");
+    if (resultElement) {
+        resultElement.style.display = "block";
+        resultElement.textContent = "Analyzing your report with CivicOS AI...";
+    }
+
+    try {
+        detectedType = await detectCivicProblem(description);
+    } catch (error) {
+        console.error("CivicOS AI detection failed:", error);
+        detectedType = "AI Detection Unavailable";
+    }
+
     // Generate Issue ID
     const issueNumber =
         Math.floor(
@@ -155,7 +217,7 @@ function submitReport() {
 
         id: issueId,
 
-        type: "Pending AI Detection",
+        type: detectedType,
 
         description: description,
 
@@ -197,7 +259,7 @@ function submitReport() {
     const issueElement =
         document.getElementById("issueId");
 
-    const resultElement =
+    const finalResultElement =
         document.getElementById("result");
 
 
@@ -207,9 +269,10 @@ function submitReport() {
     }
 
 
-    if (resultElement) {
-        resultElement.style.display =
-            "block";
+    if (finalResultElement) {
+        finalResultElement.style.display = "block";
+        finalResultElement.textContent =
+            "Report submitted: " + issueId + " | AI category: " + detectedType;
     }
 
 
